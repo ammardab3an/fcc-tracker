@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise tracker</title>
+
+    <!-- main styles -->
+    <link rel="stylesheet" href="./public/style.css">
+
+    <!-- google fonts (open sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+    
+    <header>
+        <div class="container">
+            <h2>Exercise tracker</h2>
+        </div>
+    </header>
+
+    <div class="new-user-form">
+        <div class="container">
+            <div class="form">
+                <h3>Create a New User</h3>
+                <code>POST /api/users</code>
+                <form action="/api/users" method="post">
+                    <input type="text" name="username" placeholder="user name">
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="add-exercise">
+        <div class="container">
+            <div class="form">
+                <h3>Add exercises</h3>
+                <code>POST /api/users/:_id/exercises</code>
+                <form id="exercise-form" method="post" autocomplete="on">
+                    <input type="text" name="_id" id="add-exercise_id" placeholder="id" required>
+                    <input type="text" name="description" placeholder="description" required>
+                    <input type="number" name="duration" placeholder="duration (mins.)" required>
+                    <input type="date" name="date" required>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="query-exercises">
+        <div class="container">
+            <div class="form">
+                <h3>Query exercises</h3>
+                <code>GET /api/users/:_id/logs?[from][&to][&limit]</code>
+                <form id="query-form" method="get" autocomplete="on">
+                    <input type="text" id="query-exercises_id" placeholder="id" required>
+                    <input type="date" name="from" required>
+                    <input type="date" name="to" required>
+                    <input type="number" name="limit" placeholder="0 for unlimited" required>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        const addFrm = document.getElementById("exercise-form");
+        addFrm.addEventListener("submit", () => {
+            const userId = document.getElementById("add-exercise_id").value;
+            addFrm.action = `/api/users/${userId}/exercises`;
+            console.log(addFrm.action);
+            addFrm.submit();
+        });
+
+        const queryFrm = document.getElementById("query-form");
+        queryFrm.addEventListener("submit", () => {
+            const userId = document.getElementById("query-exercises_id").value;
+            queryFrm.action = `/api/users/${userId}/logs`
+            console.log(queryFrm.action);
+            queryFrm.submit();
+        });
+
+    </script>
+
+</body>
+</html>

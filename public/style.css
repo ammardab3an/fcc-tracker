@@ -1,0 +1,65 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 2;
+}
+body header {
+  position: relative;
+}
+body header::after {
+  content: "";
+  display: block;
+  position: relative;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #888;
+  height: 2px;
+  width: 120%;
+}
+
+code {
+  background-color: #FFFEC4;
+  padding: 5px;
+  font-size: 16px;
+  margin: 5px;
+}
+
+.container {
+  display: block;
+}
+
+.form {
+  margin: 20px;
+  padding: 0 20px;
+  padding-bottom: 20px;
+  background-color: #87D37C;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.form form * {
+  width: 250px;
+  padding: 5px 10px;
+}
+
+.example .container p {
+  margin: 5px;
+}
+
+/*# sourceMappingURL=style.css.map */
