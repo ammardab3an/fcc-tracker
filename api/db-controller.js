@@ -1,6 +1,5 @@
-
 const mongoose = require('mongoose');
-const {userModel, exerciseModel} = require('./dp-models');
+const {userModel, exerciseModel} = require('./db-models');
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
